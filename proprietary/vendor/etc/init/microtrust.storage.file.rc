@@ -1,0 +1,13 @@
+on post-fs-data
+    write /proc/bootprof "start itrusty secure storage"
+    mkdir data/vendor
+    mkdir /cache/trusty 0775 system system
+    mkdir /data/vendor/thh 0755 system system
+    mkdir /data/vendor/thh/trusty 0755 system system
+    mkdir /data/vendor/thh/tee_00 0755 system system
+    mkdir /vendor/thh/ta/ 0755 system system
+    restorecon_recursive /data/vendor/thh
+
+on fs
+    mkdir /vendor/persist/rpmb 0771 system system
+    restorecon_recursive /vendor/persist
